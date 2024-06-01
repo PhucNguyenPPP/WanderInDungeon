@@ -7,6 +7,8 @@ public class PlayerEnergy : MonoBehaviour
 {
     [Header("Player")]
     [SerializeField] private PlayerConfig playerConfig;
+
+    public bool CanUseEnergy => playerConfig.Energy > 0f;
     
     private void Update()
     {
