@@ -96,6 +96,8 @@ GameObject:
   - component: {fileID: 6582895090770084602}
   - component: {fileID: 1775897657147528254}
   - component: {fileID: 5782851221700064368}
+  - component: {fileID: 2748428339549639155}
+  - component: {fileID: 1694611477457635485}
   m_Layer: 0
   m_Name: Player_Ganfald
   m_TagString: Untagged
@@ -184,6 +186,31 @@ MonoBehaviour:
   dashSpeed: 25
   dashTime: 0.4
   transperency: 0.1
+--- !u!114 &2748428339549639155
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3232147400669548829}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 05c9f8ca986027c469d2d4d005bdff73, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerConfig: {fileID: 11400000, guid: bae7ff45208554445a6985a328af81dc, type: 2}
+--- !u!114 &1694611477457635485
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3232147400669548829}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c0d0d67a8af8d74db9cc907f5151252, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5019387634538098820
 GameObject:
   m_ObjectHideFlags: 0
