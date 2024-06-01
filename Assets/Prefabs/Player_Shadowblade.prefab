@@ -180,6 +180,8 @@ GameObject:
   - component: {fileID: 4115983983574443385}
   - component: {fileID: 6724757036615272731}
   - component: {fileID: 6553297249161349845}
+  - component: {fileID: 3017899367967674546}
+  - component: {fileID: 4670743036675759955}
   m_Layer: 0
   m_Name: Player_Shadowblade
   m_TagString: Untagged
@@ -268,3 +270,28 @@ MonoBehaviour:
   dashSpeed: 25
   dashTime: 0.4
   transperency: 0.1
+--- !u!114 &3017899367967674546
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8129991618719510746}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 05c9f8ca986027c469d2d4d005bdff73, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerConfig: {fileID: 11400000, guid: 0d1c8779df642c74da473fa1ea68c493, type: 2}
+--- !u!114 &4670743036675759955
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8129991618719510746}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c0d0d67a8af8d74db9cc907f5151252, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

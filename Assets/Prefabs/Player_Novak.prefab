@@ -96,6 +96,8 @@ GameObject:
   - component: {fileID: 4259584737581508147}
   - component: {fileID: 6272013371132905218}
   - component: {fileID: 2983329357418339494}
+  - component: {fileID: 4594277231074207244}
+  - component: {fileID: 5393548114313336315}
   m_Layer: 0
   m_Name: Player_Novak
   m_TagString: Untagged
@@ -184,6 +186,31 @@ MonoBehaviour:
   dashSpeed: 25
   dashTime: 0.4
   transperency: 0.1
+--- !u!114 &4594277231074207244
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6160518082945907852}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 05c9f8ca986027c469d2d4d005bdff73, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerConfig: {fileID: 11400000, guid: 427f355ca2457bd45a07fe19c8ab5c7a, type: 2}
+--- !u!114 &5393548114313336315
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6160518082945907852}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c0d0d67a8af8d74db9cc907f5151252, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6163236403005085618
 GameObject:
   m_ObjectHideFlags: 0
