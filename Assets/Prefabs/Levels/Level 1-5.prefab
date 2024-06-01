@@ -52,6 +52,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 3362164624309056433}
     m_Modifications:
+    - target: {fileID: 4268241667825467712, guid: 68180c4c1c0dba84daada36714a14826, type: 3}
+      propertyPath: roomType
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5958408418736454419, guid: 68180c4c1c0dba84daada36714a14826, type: 3}
       propertyPath: m_Name
       value: Room_1C_S - Entrance
