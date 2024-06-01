@@ -33,7 +33,7 @@ public class ItemWeapon : ItemData
     
     public override void PickUp()
     {
-        LevelManager.Instance.Player
+        LevelManager.Instance.SelectedPlayer
             .GetComponent<PlayerWeapon>().EquipWeapon(WeaponPrefab);
     }
 }

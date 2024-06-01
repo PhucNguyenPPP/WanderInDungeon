@@ -128,11 +128,9 @@ GameObject:
   - component: {fileID: -2133943861139598501}
   - component: {fileID: 5099644459334340680}
   - component: {fileID: 4894291914226023832}
-  - component: {fileID: 5568286394306336955}
-  - component: {fileID: 706160265853186686}
-  - component: {fileID: 6960582485288342865}
+  - component: {fileID: -69011991334660874}
   m_Layer: 0
-  m_Name: Player_Ember
+  m_Name: Selectable_Ember
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -265,7 +263,7 @@ MonoBehaviour:
   dashSpeed: 25
   dashTime: 0.4
   transperency: 0.1
---- !u!114 &5568286394306336955
+--- !u!114 &-69011991334660874
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -274,36 +272,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 5886815283409335054}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 05c9f8ca986027c469d2d4d005bdff73, type: 3}
+  m_Script: {fileID: 11500000, guid: 1bd3ff29e7fda8141b3e7f13bc733d74, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerConfig: {fileID: 11400000, guid: 06d3c7f4c42f4ca49b44fd3bb87b5328, type: 2}
---- !u!114 &706160265853186686
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5886815283409335054}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6c0d0d67a8af8d74db9cc907f5151252, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerConfig: {fileID: 11400000, guid: 06d3c7f4c42f4ca49b44fd3bb87b5328, type: 2}
---- !u!114 &6960582485288342865
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5886815283409335054}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 434e48c2fef4776448cb5313d7f8c255, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  weaponPos: {fileID: 7442957931758039848}
+  config: {fileID: 11400000, guid: 06d3c7f4c42f4ca49b44fd3bb87b5328, type: 2}
 --- !u!1 &8935924177771387732
 GameObject:
   m_ObjectHideFlags: 0
