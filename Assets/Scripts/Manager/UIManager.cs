@@ -1,9 +1,12 @@
+using System;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
+    public static UIManager Instance;
+    
     [Header("Reference")] // For now
     [SerializeField] private PlayerConfig playerConfig;
 
@@ -14,7 +17,15 @@ public class UIManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI armorText;
     [SerializeField] private Image energyBar;
     [SerializeField] private TextMeshProUGUI energyText;
-    
+
+    [Header("UI Extra")] 
+    [SerializeField] private CanvasGroup fadePanel;
+
+    private void Awake()
+    {
+        Instance = this;
+    }
+
     private void Update()
     {
         UpdatePlayerUI();
@@ -32,5 +43,10 @@ public class UIManager : MonoBehaviour
         healthText.text = $"{playerConfig.CurrentHealth}/{playerConfig.MaxHealth}";
         armorText.text = $"{playerConfig.Armor}/{playerConfig.MaxArmor}";
         energyText.text = $"{playerConfig.Energy}/{playerConfig.MaxEnergy}";
+    }
+
+    public void FadeNewDungeon(float value)
+    {
+        StartCoroutine(Helpers.IEFade(fadePanel, value, 1.5f));
     }
 }
