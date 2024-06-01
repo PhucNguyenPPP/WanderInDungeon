@@ -13,11 +13,9 @@ GameObject:
   - component: {fileID: 5457372929855899841}
   - component: {fileID: 4066740492254137931}
   - component: {fileID: 3546365129822896722}
-  - component: {fileID: 4934778970273365770}
-  - component: {fileID: 2871631197814667213}
-  - component: {fileID: 1548197211474973862}
+  - component: {fileID: 5037765375182038546}
   m_Layer: 0
-  m_Name: Player_Iron
+  m_Name: Selectable_Iron
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -150,7 +148,7 @@ MonoBehaviour:
   dashSpeed: 25
   dashTime: 0.4
   transperency: 0.1
---- !u!114 &4934778970273365770
+--- !u!114 &5037765375182038546
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -159,36 +157,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 2239887797361417007}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 05c9f8ca986027c469d2d4d005bdff73, type: 3}
+  m_Script: {fileID: 11500000, guid: 1bd3ff29e7fda8141b3e7f13bc733d74, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerConfig: {fileID: 11400000, guid: b3791e5eeb5f33f4e9ae7b3ecdf72f95, type: 2}
---- !u!114 &2871631197814667213
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2239887797361417007}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6c0d0d67a8af8d74db9cc907f5151252, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerConfig: {fileID: 11400000, guid: b3791e5eeb5f33f4e9ae7b3ecdf72f95, type: 2}
---- !u!114 &1548197211474973862
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2239887797361417007}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 434e48c2fef4776448cb5313d7f8c255, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  weaponPos: {fileID: 7058087983259039580}
+  config: {fileID: 11400000, guid: b3791e5eeb5f33f4e9ae7b3ecdf72f95, type: 2}
 --- !u!1 &3354553308916305742
 GameObject:
   m_ObjectHideFlags: 0

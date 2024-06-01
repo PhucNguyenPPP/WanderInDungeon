@@ -5,9 +5,6 @@ using UnityEngine.UI;
 
 public class UIManager : Singleton<UIManager>
 {
-    [Header("Reference")] // For now
-    [SerializeField] private PlayerConfig playerConfig;
-
     [Header("Player UI")]
     [SerializeField] private Image healthBar;
     [SerializeField] private TextMeshProUGUI healthText;
@@ -26,6 +23,7 @@ public class UIManager : Singleton<UIManager>
 
     private void UpdatePlayerUI()
     {
+        PlayerConfig playerConfig = GameManager.Instance.Player;
         healthBar.fillAmount = Mathf.Lerp(healthBar.fillAmount,
             playerConfig.CurrentHealth / playerConfig.MaxHealth, 10f * Time.deltaTime);
         armorBar.fillAmount = Mathf.Lerp(armorBar.fillAmount,
