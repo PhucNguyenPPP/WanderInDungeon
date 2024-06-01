@@ -6,17 +6,14 @@ using Random = UnityEngine.Random;
 
 public class LevelManager : Singleton<LevelManager>
 {
-    [Header("Temp")]
-    [SerializeField] private GameObject player;
-    
     [Header("Config")]
     [SerializeField] private RoomTemplate roomTemplates;
     [SerializeField] private DungeonLibrary dungeonLibrary;
-
-    public GameObject Player => player;
+    
     public RoomTemplate RoomTemplates => roomTemplates;
     public DungeonLibrary DungeonLibrary => dungeonLibrary;
-
+    public GameObject SelectedPlayer { get; set; }
+    
     private Room currentRoom;
     private int currentLevelIndex;
     private int currentDungeonIndex;
@@ -24,11 +21,25 @@ public class LevelManager : Singleton<LevelManager>
 
     private List<GameObject> currentLevelChestItems = new List<GameObject>();
 
+    protected override void Awake()
+    {
+        base.Awake();
+        CreatePlayer();
+    }
+
     private void Start()
     {
         CreateDungeon();
     }
 
+    private void CreatePlayer()
+    {
+        if (GameManager.Instance.Player != null)
+        {
+            SelectedPlayer = Instantiate(GameManager.Instance.Player.PlayerPrefab);
+        }
+    }
+    
     private void CreateDungeon()
     {
         currentDungeonGO = Instantiate(dungeonLibrary.Levels[currentLevelIndex]
@@ -66,9 +77,9 @@ public class LevelManager : Singleton<LevelManager>
 
         if (entranceRoom != null)
         {
-            if (player != null)
+            if (SelectedPlayer != null)
             {
-                player.transform.position = entranceRoom.transform.position;
+                SelectedPlayer.transform.position = entranceRoom.transform.position;
             }   
         }
     }
