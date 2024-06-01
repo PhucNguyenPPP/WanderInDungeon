@@ -90,6 +90,11 @@ public class PlayerMovement : MonoBehaviour
         color = new Color(color.r, color.g, color.b, alpha);
         spriteRenderer.color = color;
     }
+
+    public void FaceRightDirection()
+    {
+        spriteRenderer.flipX = false;
+    }
     
     private void CaptureInput()
     {

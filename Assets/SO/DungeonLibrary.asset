@@ -20,5 +20,14 @@ MonoBehaviour:
     - {fileID: 8318035796122685315, guid: 8def2a9cb9962ac45a66d7c7328b0bf5, type: 3}
     - {fileID: 7740429034815584188, guid: 5fa7f3bc55119b141931c159c420d123, type: 3}
     - {fileID: 389783575228378858, guid: 2f301e796b56e714db45557145be8442, type: 3}
+    ChestItems: {fileID: 11400000, guid: 352328ffb31b26548aa1a6fa8482b5a3, type: 2}
+  - Name: Level 1
+    Dungeons:
+    - {fileID: 3492722352752597590, guid: 008ffbd7678c4644ba87a195ca93acaa, type: 3}
+    - {fileID: 4241347680678657222, guid: 575166c2aa15a4b45aab12f4d311618d, type: 3}
+    - {fileID: 8318035796122685315, guid: 8def2a9cb9962ac45a66d7c7328b0bf5, type: 3}
+    - {fileID: 7740429034815584188, guid: 5fa7f3bc55119b141931c159c420d123, type: 3}
+    - {fileID: 389783575228378858, guid: 2f301e796b56e714db45557145be8442, type: 3}
+    ChestItems: {fileID: 11400000, guid: 352328ffb31b26548aa1a6fa8482b5a3, type: 2}
   DoorNS: {fileID: 2961684984685487470, guid: 53802800bf30cb343b3de30e2ddbe4c2, type: 3}
   DoorWE: {fileID: 1143116225311884717, guid: 7d67058e9c20aa4479806f255148d439, type: 3}

@@ -8,19 +8,6 @@ public class PlayerHealth : MonoBehaviour
     [Header("Player")]
     [SerializeField] private PlayerConfig playerConfig;
 
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.R))
-        {
-            TakeDamage(1f);
-        }
-
-        if (Input.GetKeyDown(KeyCode.P))
-        {
-            RecoverHealth(1f);
-        }
-    }
-
     public void RecoverHealth(float amount)
     {
         playerConfig.CurrentHealth += amount;

@@ -27,4 +27,13 @@ public class ItemWeapon : ItemData
     public float TimeBetweenShots;
     public float MinSpread;
     public float MaxSpread;
+
+    [Header("Weapon")]
+    public Weapon WeaponPrefab;
+    
+    public override void PickUp()
+    {
+        LevelManager.Instance.Player
+            .GetComponent<PlayerWeapon>().EquipWeapon(WeaponPrefab);
+    }
 }
