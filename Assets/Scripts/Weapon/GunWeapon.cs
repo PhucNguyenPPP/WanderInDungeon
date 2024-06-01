@@ -17,4 +17,9 @@ public class GunWeapon : Weapon
         projectile.transform.rotation = 
             Quaternion.Euler(randomSpread * Vector3.forward);
     }
+
+    public override void DestroyWeapon()
+    {
+        Destroy(gameObject);
+    }
 }

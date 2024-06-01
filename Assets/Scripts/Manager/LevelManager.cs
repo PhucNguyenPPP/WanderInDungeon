@@ -2,18 +2,18 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
-public class LevelManager : MonoBehaviour
+public class LevelManager : Singleton<LevelManager>
 {
-    public static LevelManager Instance;
-
     [Header("Temp")]
     [SerializeField] private GameObject player;
     
     [Header("Config")]
     [SerializeField] private RoomTemplate roomTemplates;
     [SerializeField] private DungeonLibrary dungeonLibrary;
-    
+
+    public GameObject Player => player;
     public RoomTemplate RoomTemplates => roomTemplates;
     public DungeonLibrary DungeonLibrary => dungeonLibrary;
 
@@ -21,11 +21,8 @@ public class LevelManager : MonoBehaviour
     private int currentLevelIndex;
     private int currentDungeonIndex;
     private GameObject currentDungeonGO;
-    
-    private void Awake()
-    {
-        Instance = this;
-    }
+
+    private List<GameObject> currentLevelChestItems = new List<GameObject>();
 
     private void Start()
     {
@@ -36,6 +33,8 @@ public class LevelManager : MonoBehaviour
     {
         currentDungeonGO = Instantiate(dungeonLibrary.Levels[currentLevelIndex]
             .Dungeons[currentDungeonIndex], transform);
+        currentLevelChestItems = new List<GameObject>
+            (dungeonLibrary.Levels[currentLevelIndex].ChestItems.AvailableItems);
     }
 
     private void ContinueDungeon()
@@ -74,6 +73,14 @@ public class LevelManager : MonoBehaviour
         }
     }
 
+    public GameObject GetRandomItemForChest()
+    {
+        int randomIndex = Random.Range(0, currentLevelChestItems.Count);
+        GameObject item = currentLevelChestItems[randomIndex];
+        currentLevelChestItems.Remove(item);
+        return item;
+    }
+    
     private IEnumerator IEContinueDungeon()
     {
         UIManager.Instance.FadeNewDungeon(1f);

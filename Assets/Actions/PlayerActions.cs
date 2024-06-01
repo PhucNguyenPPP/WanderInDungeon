@@ -142,6 +142,54 @@ public partial class @PlayerActions: IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": false
                 }
             ]
+        },
+        {
+            ""name"": ""Interactions"",
+            ""id"": ""0e6a498b-8de5-48d4-8e51-b1cf62c9ddfa"",
+            ""actions"": [
+                {
+                    ""name"": ""Pickup"",
+                    ""type"": ""Button"",
+                    ""id"": ""8f2b8511-057e-4da3-b417-bc1e04756ed4"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""ChangeWeapons"",
+                    ""type"": ""Button"",
+                    ""id"": ""070c4a24-6191-4dcc-b834-09cf728581da"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""7c60d1d4-e09e-4a56-9de6-247f33b5cac8"",
+                    ""path"": ""<Keyboard>/r"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Pickup"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""8add82b8-91bb-44d5-85b3-99ce65d66287"",
+                    ""path"": ""<Keyboard>/tab"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ChangeWeapons"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
         }
     ],
     ""controlSchemes"": []
@@ -153,6 +201,10 @@ public partial class @PlayerActions: IInputActionCollection2, IDisposable
         // Weapon
         m_Weapon = asset.FindActionMap("Weapon", throwIfNotFound: true);
         m_Weapon_Shoot = m_Weapon.FindAction("Shoot", throwIfNotFound: true);
+        // Interactions
+        m_Interactions = asset.FindActionMap("Interactions", throwIfNotFound: true);
+        m_Interactions_Pickup = m_Interactions.FindAction("Pickup", throwIfNotFound: true);
+        m_Interactions_ChangeWeapons = m_Interactions.FindAction("ChangeWeapons", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -310,6 +362,60 @@ public partial class @PlayerActions: IInputActionCollection2, IDisposable
         }
     }
     public WeaponActions @Weapon => new WeaponActions(this);
+
+    // Interactions
+    private readonly InputActionMap m_Interactions;
+    private List<IInteractionsActions> m_InteractionsActionsCallbackInterfaces = new List<IInteractionsActions>();
+    private readonly InputAction m_Interactions_Pickup;
+    private readonly InputAction m_Interactions_ChangeWeapons;
+    public struct InteractionsActions
+    {
+        private @PlayerActions m_Wrapper;
+        public InteractionsActions(@PlayerActions wrapper) { m_Wrapper = wrapper; }
+        public InputAction @Pickup => m_Wrapper.m_Interactions_Pickup;
+        public InputAction @ChangeWeapons => m_Wrapper.m_Interactions_ChangeWeapons;
+        public InputActionMap Get() { return m_Wrapper.m_Interactions; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(InteractionsActions set) { return set.Get(); }
+        public void AddCallbacks(IInteractionsActions instance)
+        {
+            if (instance == null || m_Wrapper.m_InteractionsActionsCallbackInterfaces.Contains(instance)) return;
+            m_Wrapper.m_InteractionsActionsCallbackInterfaces.Add(instance);
+            @Pickup.started += instance.OnPickup;
+            @Pickup.performed += instance.OnPickup;
+            @Pickup.canceled += instance.OnPickup;
+            @ChangeWeapons.started += instance.OnChangeWeapons;
+            @ChangeWeapons.performed += instance.OnChangeWeapons;
+            @ChangeWeapons.canceled += instance.OnChangeWeapons;
+        }
+
+        private void UnregisterCallbacks(IInteractionsActions instance)
+        {
+            @Pickup.started -= instance.OnPickup;
+            @Pickup.performed -= instance.OnPickup;
+            @Pickup.canceled -= instance.OnPickup;
+            @ChangeWeapons.started -= instance.OnChangeWeapons;
+            @ChangeWeapons.performed -= instance.OnChangeWeapons;
+            @ChangeWeapons.canceled -= instance.OnChangeWeapons;
+        }
+
+        public void RemoveCallbacks(IInteractionsActions instance)
+        {
+            if (m_Wrapper.m_InteractionsActionsCallbackInterfaces.Remove(instance))
+                UnregisterCallbacks(instance);
+        }
+
+        public void SetCallbacks(IInteractionsActions instance)
+        {
+            foreach (var item in m_Wrapper.m_InteractionsActionsCallbackInterfaces)
+                UnregisterCallbacks(item);
+            m_Wrapper.m_InteractionsActionsCallbackInterfaces.Clear();
+            AddCallbacks(instance);
+        }
+    }
+    public InteractionsActions @Interactions => new InteractionsActions(this);
     public interface IMovementActions
     {
         void OnMove(InputAction.CallbackContext context);
@@ -318,5 +424,10 @@ public partial class @PlayerActions: IInputActionCollection2, IDisposable
     public interface IWeaponActions
     {
         void OnShoot(InputAction.CallbackContext context);
+    }
+    public interface IInteractionsActions
+    {
+        void OnPickup(InputAction.CallbackContext context);
+        void OnChangeWeapons(InputAction.CallbackContext context);
     }
 }

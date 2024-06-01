@@ -25,7 +25,7 @@ Transform:
   m_GameObject: {fileID: 702120769248360616}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: -0.368, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -102,7 +102,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1535305653
-  m_SortingLayer: 4
+  m_SortingLayer: 5
   m_SortingOrder: 10
   m_Sprite: {fileID: 1817387073, guid: ce94dd8573addbc4fa17e186e7c6ebd6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -186,7 +186,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1535305653
-  m_SortingLayer: 4
+  m_SortingLayer: 5
   m_SortingOrder: 0
   m_Sprite: {fileID: -1210199035, guid: 358c108349337764cbcd8a4774dd0f15, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -306,7 +306,8 @@ GameObject:
   - component: {fileID: 6553297249161349845}
   - component: {fileID: 3017899367967674546}
   - component: {fileID: 4670743036675759955}
-  m_Layer: 0
+  - component: {fileID: 5961727213497802815}
+  m_Layer: 7
   m_Name: Player_Shadowblade
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -467,3 +468,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerConfig: {fileID: 11400000, guid: 0d1c8779df642c74da473fa1ea68c493, type: 2}
+--- !u!114 &5961727213497802815
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8129991618719510746}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 434e48c2fef4776448cb5313d7f8c255, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weaponPos: {fileID: 5721372350692812211}
