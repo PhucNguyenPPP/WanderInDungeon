@@ -7,19 +7,8 @@ public class PlayerEnergy : MonoBehaviour
 {
     [Header("Player")]
     [SerializeField] private PlayerConfig playerConfig;
-    
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.H))
-        {
-            UseEnergy(1f);
-        }
 
-        if (Input.GetKeyDown(KeyCode.J))
-        {
-            RecoverEnergy(1f);
-        }
-    }
+    public bool CanUseEnergy => playerConfig.Energy > 0f;
 
     public void UseEnergy(float amount)
     {

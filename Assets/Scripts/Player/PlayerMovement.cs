@@ -12,6 +12,8 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float dashTime = 0.3f;
     [SerializeField] private float transperency = 0.3f;
 
+    public Vector2 MoveDirection => moveDirection;
+    
     private SpriteRenderer spriteRenderer;
     private Rigidbody2D rb2D;
     private PlayerActions actions;
@@ -87,6 +89,11 @@ public class PlayerMovement : MonoBehaviour
         Color color = spriteRenderer.color;
         color = new Color(color.r, color.g, color.b, alpha);
         spriteRenderer.color = color;
+    }
+
+    public void FaceRightDirection()
+    {
+        spriteRenderer.flipX = false;
     }
     
     private void CaptureInput()
