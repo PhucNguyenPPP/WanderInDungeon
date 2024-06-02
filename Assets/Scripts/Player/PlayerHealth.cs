@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class PlayerHealth : MonoBehaviour, ITakeDamage
 {
+    public static event Action OnPlayerDeadEvent;
+
     [Header("Player")]
     [SerializeField] private PlayerConfig playerConfig;
 
@@ -47,6 +49,7 @@ public class PlayerHealth : MonoBehaviour, ITakeDamage
 
     private void PlayerDead()
     {
+        OnPlayerDeadEvent?.Invoke();
         Destroy(gameObject);
     }
 }

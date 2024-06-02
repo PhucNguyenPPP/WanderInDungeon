@@ -24,6 +24,7 @@ MonoBehaviour:
     - {fileID: 4316638389226678843, guid: 1cf07871f00a6e445a20a497c366e39e, type: 3}
     - {fileID: 5018739773517410727, guid: f92cc5c47dc84e54ca9c7e408def36f7, type: 3}
     - {fileID: 4316638389226678843, guid: cac06227769da934cb85d59085fe4dfb, type: 3}
+    Boss: {fileID: 4316638389226678843, guid: 09eb121fe700f074096279ce5006c4a2, type: 3}
     MinEnemiesPerRoom: 3
     MaxEnemiesPerRoom: 6
     MinBonusPerEnemy: 4

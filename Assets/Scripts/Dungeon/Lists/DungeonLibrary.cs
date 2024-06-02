@@ -26,6 +26,7 @@ public class Level
     public string Name;
     public GameObject[] Dungeons;
     public EnemyBrain[] Enemies;
+    public EnemyBrain Boss;
     public int MinEnemiesPerRoom;
     public int MaxEnemiesPerRoom;
     public int MinBonusPerEnemy;

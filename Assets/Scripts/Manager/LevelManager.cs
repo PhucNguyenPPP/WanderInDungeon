@@ -43,6 +43,14 @@ public class LevelManager : Singleton<LevelManager>
         }
     }
 
+    private void CreateBoss()
+    {
+        Vector3 tilePos = currentRoom.GetAvailableTilePos();
+        EnemyBrain boss = Instantiate(dungeonLibrary.Levels[currentLevelIndex].Boss,
+            tilePos, Quaternion.identity, currentRoom.transform);
+        boss.RoomParent = currentRoom;
+    }
+
     private void CreateEnemies()
     {
         int enemyAmount = GetEnemyAmount();
@@ -180,6 +188,7 @@ public class LevelManager : Singleton<LevelManager>
                     CreateEnemies();
                     break;
                 case RoomType.RoomBoss:
+                    CreateBoss();
                     break;
             }
         }

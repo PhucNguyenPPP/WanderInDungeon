@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class UIManager : Singleton<UIManager>
@@ -16,7 +17,7 @@ public class UIManager : Singleton<UIManager>
 
     [Header("UI Extra")]
     [SerializeField] private CanvasGroup fadePanel;
-    //[SerializeField] private GameObject gameOverPanel;
+    [SerializeField] private GameObject gameOverPanel;
     [SerializeField] private TextMeshProUGUI levelTMP;
     [SerializeField] private TextMeshProUGUI completedTMP;
     [SerializeField] private TextMeshProUGUI coinsTMP;
@@ -30,6 +31,11 @@ public class UIManager : Singleton<UIManager>
     {
         UpdatePlayerUI();
         coinsTMP.text = CoinManager.Instance.Coins.ToString();
+    }
+
+    public void PlayButton()
+    {
+        SceneManager.LoadScene("Main");
     }
 
     public void UpdateLevelText(string levelText)
@@ -80,17 +86,22 @@ public class UIManager : Singleton<UIManager>
         weaponIcon.sprite = currentWeapon.ItemWeapon.Icon;
     }
 
+    private void PlayerDeadCallback()
+    {
+        gameOverPanel.SetActive(true);
+    }
+
     private void OnEnable()
     {
         PlayerWeapon.OnWeaponUIUpdateEvent += WeaponUIUpdateCallback;
-        //PlayerHealth.OnPlayerDeadEvent += PlayerDeadCallback;
+        PlayerHealth.OnPlayerDeadEvent += PlayerDeadCallback;
         LevelManager.OnRoomCompletedEvent += RoomCompletedCallback;
     }
 
     private void OnDisable()
     {
         PlayerWeapon.OnWeaponUIUpdateEvent -= WeaponUIUpdateCallback;
-        //PlayerHealth.OnPlayerDeadEvent -= PlayerDeadCallback;
+        PlayerHealth.OnPlayerDeadEvent -= PlayerDeadCallback;
         LevelManager.OnRoomCompletedEvent -= RoomCompletedCallback;
     }
 }

@@ -7,7 +7,9 @@ public class Projectile : MonoBehaviour
 
     public Vector3 Direction { get; set; }
     public float Damage { get; set; }
-    
+
+    public float Speed { get; set; }
+
     private void Update()
     {
         transform.Translate(Direction * (speed * Time.deltaTime));
