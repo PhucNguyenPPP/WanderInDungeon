@@ -10,6 +10,11 @@ public class Projectile : MonoBehaviour
 
     public float Speed { get; set; }
 
+    private void Start()
+    {
+        Speed = speed;
+    }
+
     private void Update()
     {
         transform.Translate(Direction * (speed * Time.deltaTime));

@@ -49,9 +49,9 @@ GameObject:
   - component: {fileID: 9203793729241835435}
   - component: {fileID: 2071144328382094801}
   - component: {fileID: -8041913740089224153}
-  - component: {fileID: -5000034827842338045}
+  - component: {fileID: -2285082846020925676}
   m_Layer: 9
-  m_Name: Boss_Witcher
+  m_Name: Boss_Eye
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -114,7 +114,7 @@ SpriteRenderer:
   m_SortingLayerID: -1827107045
   m_SortingLayer: 5
   m_SortingOrder: 0
-  m_Sprite: {fileID: -589680819, guid: ce94dd8573addbc4fa17e186e7c6ebd6, type: 3}
+  m_Sprite: {fileID: 1738093452, guid: ce94dd8573addbc4fa17e186e7c6ebd6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -239,7 +239,7 @@ MonoBehaviour:
   - StateID: Attack
     Actions:
     - {fileID: 2071144328382094801}
-    - {fileID: -5000034827842338045}
+    - {fileID: -2285082846020925676}
     Transitions:
     - Decision: {fileID: -8041913740089224153}
       TrueState: 
@@ -297,7 +297,7 @@ MonoBehaviour:
   obstacleMask:
     serializedVersion: 2
     m_Bits: 1024
---- !u!114 &-5000034827842338045
+--- !u!114 &-2285082846020925676
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -306,8 +306,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 9175496166852915747}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9fa7a91483dcc444ead20dca41733d48, type: 3}
+  m_Script: {fileID: 11500000, guid: 285fbbb450f5af241b4bda78bbecf1b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  projectileAmount: 8
-  timeBtwAttacks: 1
+  projectileAmount: 10
+  timeBtwAttacks: 2
+  minRandomSpeed: 4
+  maxRandomSpeed: 8
+  minSpawnTime: 0.1
+  maxSpawnTime: 1.5
