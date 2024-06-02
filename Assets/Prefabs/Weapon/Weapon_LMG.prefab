@@ -102,7 +102,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1435031805
-  m_SortingLayer: 5
+  m_SortingLayer: 7
   m_SortingOrder: 0
   m_Sprite: {fileID: -1196987343, guid: be39d58b5f0529d41b509ea1aa9166e9, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -126,7 +126,7 @@ GameObject:
   - component: {fileID: 4066314141898899869}
   - component: {fileID: 6337757023549590745}
   - component: {fileID: 5744371470932194908}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Weapon_LMG
   m_TagString: Untagged
   m_Icon: {fileID: 0}
