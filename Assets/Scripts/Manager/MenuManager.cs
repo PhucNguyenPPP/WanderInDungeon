@@ -31,8 +31,11 @@ public class MenuManager : Singleton<MenuManager>
     [SerializeField] private GameObject unlockButton;
     [SerializeField] private GameObject upgradeButton;
     [SerializeField] private GameObject selectButton;
+
     
     private SelectablePlayer currentPlayer;
+
+    private bool playerSelected;
     
     private void Start()
     {
@@ -63,12 +66,14 @@ public class MenuManager : Singleton<MenuManager>
 
     public void SelectPlayer()
     {
+        if (playerSelected) return;
         if (currentPlayer.Config.Unlocked)
         {
             currentPlayer.GetComponent<PlayerMovement>().enabled = true;
             currentPlayer.Config.ResetPlayerStats();
             GameManager.Instance.Player = currentPlayer.Config;
             ClosePlayerPanel();
+            playerSelected = true;
         }
     }
 
@@ -123,8 +128,8 @@ public class MenuManager : Singleton<MenuManager>
         playerEnergyMaxStat.text = currentPlayer.Config.MaxEnergy.ToString();
         playerCriticalMaxStat.text = currentPlayer.Config.CriticalChance.ToString();
 
-        playerUnlockCostTMP.text = currentPlayer.Config.UnlockCost.ToString();
-        playerUpgradeCostTMP.text = currentPlayer.Config.UpgradeCost.ToString();
+        playerUnlockCostTMP.text = currentPlayer.Config.UnlockCost.ToString("0.00");
+        playerUpgradeCostTMP.text = currentPlayer.Config.UpgradeCost.ToString("0.00");
 
         // Update Bars
         healthBar.fillAmount = currentPlayer.Config.MaxHealth 

@@ -213,6 +213,12 @@ public class LevelManager : Singleton<LevelManager>
                 currentRoom.SetRoomCompleted();
                 CreateChestInsideRoom();
                 OnRoomCompletedEvent?.Invoke();
+                if (currentRoom.RoomType == RoomType.RoomBoss)
+                {
+                    Vector3 tilePos = currentRoom.GetAvailableTilePos();
+                    Instantiate(dungeonLibrary.Portal, tilePos,
+                        Quaternion.identity, currentRoom.transform);
+                }
             }
         }
     }

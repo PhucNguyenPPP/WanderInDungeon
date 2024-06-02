@@ -34,6 +34,7 @@ MonoBehaviour:
   DoorWE: {fileID: 1143116225311884717, guid: 7d67058e9c20aa4479806f255148d439, type: 3}
   Chest: {fileID: 9190972519728180136, guid: 4e203d24ad6a98e4bba54f16aec89de8, type: 3}
   Tombstones: {fileID: 2381018403652919566, guid: d2942b7ed7a3ff749a24c161fc3cec45, type: 3}
+  Portal: {fileID: 1893410051451357317, guid: b1abd02deca3f344496233ea43851aa1, type: 3}
   EnemyBonus:
   - {fileID: 9170377481131665732, guid: 56a679398383b294faaabb2eb1b36d33, type: 3}
   - {fileID: -6902979848648847626, guid: 65160ed7e2600924aa4095324211b485, type: 3}

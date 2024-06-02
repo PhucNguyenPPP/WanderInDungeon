@@ -14,6 +14,7 @@ public class DungeonLibrary : ScriptableObject
     [Header("Extra")]
     public GameObject Chest;
     public GameObject Tombstones;
+    public GameObject Portal;
 
     [Header("Bonus")]
     public BonusBase[] EnemyBonus;
