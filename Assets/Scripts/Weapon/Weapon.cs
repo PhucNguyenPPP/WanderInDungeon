@@ -8,6 +8,8 @@ public class Weapon : MonoBehaviour
     [SerializeField] protected ItemWeapon itemWeapon;
 
     public ItemWeapon ItemWeapon => itemWeapon;
+    public CharacterWeapon CharacterParent { get; set; }
+    
     private Animator animator;
 
     private void Awake()
