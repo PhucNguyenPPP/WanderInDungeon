@@ -10,6 +10,14 @@ public class DungeonLibrary : ScriptableObject
     [Header("Room")]
     public GameObject DoorNS;
     public GameObject DoorWE;
+
+    [Header("Extra")]
+    public GameObject Chest;
+    public GameObject Tombstones;
+
+    [Header("Bonus")]
+    public BonusBase[] EnemyBonus;
+    public float BonusCreationRadius;
 }
 
 [Serializable]
@@ -20,5 +28,7 @@ public class Level
     public EnemyBrain[] Enemies;
     public int MinEnemiesPerRoom;
     public int MaxEnemiesPerRoom;
+    public int MinBonusPerEnemy;
+    public int MaxBonusPerEnemy;
     public ChestItems ChestItems;
 }

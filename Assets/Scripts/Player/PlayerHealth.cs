@@ -19,6 +19,7 @@ public class PlayerHealth : MonoBehaviour, ITakeDamage
 
     public void TakeDamage(float amount)
     {
+        DamageManager.Instance.ShowDamage(amount, transform);
         if (playerConfig.Armor > 0)
         {
             // Break armor

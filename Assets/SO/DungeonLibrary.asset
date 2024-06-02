@@ -26,6 +26,14 @@ MonoBehaviour:
     - {fileID: 4316638389226678843, guid: cac06227769da934cb85d59085fe4dfb, type: 3}
     MinEnemiesPerRoom: 3
     MaxEnemiesPerRoom: 6
+    MinBonusPerEnemy: 4
+    MaxBonusPerEnemy: 8
     ChestItems: {fileID: 11400000, guid: 352328ffb31b26548aa1a6fa8482b5a3, type: 2}
   DoorNS: {fileID: 2961684984685487470, guid: 53802800bf30cb343b3de30e2ddbe4c2, type: 3}
   DoorWE: {fileID: 1143116225311884717, guid: 7d67058e9c20aa4479806f255148d439, type: 3}
+  Chest: {fileID: 9190972519728180136, guid: 4e203d24ad6a98e4bba54f16aec89de8, type: 3}
+  Tombstones: {fileID: 2381018403652919566, guid: d2942b7ed7a3ff749a24c161fc3cec45, type: 3}
+  EnemyBonus:
+  - {fileID: 9170377481131665732, guid: 56a679398383b294faaabb2eb1b36d33, type: 3}
+  - {fileID: -6902979848648847626, guid: 65160ed7e2600924aa4095324211b485, type: 3}
+  BonusCreationRadius: 2

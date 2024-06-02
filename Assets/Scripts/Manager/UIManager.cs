@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -13,12 +14,27 @@ public class UIManager : Singleton<UIManager>
     [SerializeField] private Image energyBar;
     [SerializeField] private TextMeshProUGUI energyText;
 
-    [Header("UI Extra")] 
+    [Header("UI Extra")]
     [SerializeField] private CanvasGroup fadePanel;
-    
+    //[SerializeField] private GameObject gameOverPanel;
+    [SerializeField] private TextMeshProUGUI levelTMP;
+    [SerializeField] private TextMeshProUGUI completedTMP;
+    [SerializeField] private TextMeshProUGUI coinsTMP;
+
+    [Header("UI Weapon")]
+    [SerializeField] private GameObject weaponPanel;
+    [SerializeField] private Image weaponIcon;
+    [SerializeField] private TextMeshProUGUI weaponEnergyTMP;
+
     private void Update()
     {
         UpdatePlayerUI();
+        coinsTMP.text = CoinManager.Instance.Coins.ToString();
+    }
+
+    public void UpdateLevelText(string levelText)
+    {
+        levelTMP.text = levelText;
     }
 
     private void UpdatePlayerUI()
@@ -36,8 +52,45 @@ public class UIManager : Singleton<UIManager>
         energyText.text = $"{playerConfig.Energy}/{playerConfig.MaxEnergy}";
     }
 
+    private void RoomCompletedCallback()
+    {
+        StartCoroutine(IERoomCompleted());
+    }
+
+    private IEnumerator IERoomCompleted()
+    {
+        completedTMP.gameObject.SetActive(true);
+        yield return new WaitForSeconds(3f);
+        completedTMP.gameObject.SetActive(false);
+    }
+
     public void FadeNewDungeon(float value)
     {
         StartCoroutine(Helpers.IEFade(fadePanel, value, 1.5f));
+    }
+
+    private void WeaponUIUpdateCallback(Weapon currentWeapon)
+    {
+        if (weaponPanel.activeSelf == false)
+        {
+            weaponPanel.SetActive(true);
+        }
+
+        weaponEnergyTMP.text = currentWeapon.ItemWeapon.RequiredEnergy.ToString();
+        weaponIcon.sprite = currentWeapon.ItemWeapon.Icon;
+    }
+
+    private void OnEnable()
+    {
+        PlayerWeapon.OnWeaponUIUpdateEvent += WeaponUIUpdateCallback;
+        //PlayerHealth.OnPlayerDeadEvent += PlayerDeadCallback;
+        LevelManager.OnRoomCompletedEvent += RoomCompletedCallback;
+    }
+
+    private void OnDisable()
+    {
+        PlayerWeapon.OnWeaponUIUpdateEvent -= WeaponUIUpdateCallback;
+        //PlayerHealth.OnPlayerDeadEvent -= PlayerDeadCallback;
+        LevelManager.OnRoomCompletedEvent -= RoomCompletedCallback;
     }
 }

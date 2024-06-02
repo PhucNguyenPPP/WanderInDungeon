@@ -472,6 +472,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 3362164624309056433}
     m_Modifications:
+    - target: {fileID: 4268241667825467712, guid: 68180c4c1c0dba84daada36714a14826, type: 3}
+      propertyPath: roomType
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 5958408418736454419, guid: 68180c4c1c0dba84daada36714a14826, type: 3}
       propertyPath: m_Name
       value: Room_1C_S - Boss
@@ -577,6 +581,10 @@ PrefabInstance:
     - target: {fileID: 3588986343158292141, guid: 6f777287ad345e5419d6fb14c379e16e, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5738799117174747007, guid: 6f777287ad345e5419d6fb14c379e16e, type: 3}
+      propertyPath: roomType
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -844,6 +852,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 3362164624309056433}
     m_Modifications:
+    - target: {fileID: -634016515960942187, guid: 1f062ebb5211cf2459972b1f949076f6, type: 3}
+      propertyPath: roomType
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 6336578008540924437, guid: 1f062ebb5211cf2459972b1f949076f6, type: 3}
       propertyPath: m_Name
       value: Room_2C_NS

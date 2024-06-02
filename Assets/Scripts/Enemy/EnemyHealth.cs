@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class EnemyHealth : MonoBehaviour, ITakeDamage
 {
+    public static event Action<Transform> OnEnemyKilledEvent;
     [Header("Config")]
     [SerializeField] private float health;
 
@@ -27,8 +28,10 @@ public class EnemyHealth : MonoBehaviour, ITakeDamage
     {
         enemyHealth -= amount;
         ShowDamageColor();
+        DamageManager.Instance.ShowDamage(amount, transform);
         if (enemyHealth <= 0)
         {
+            OnEnemyKilledEvent?.Invoke(transform);
             Destroy(gameObject);
         }
     }
