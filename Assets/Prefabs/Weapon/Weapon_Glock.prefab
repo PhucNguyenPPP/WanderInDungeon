@@ -102,7 +102,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1435031805
-  m_SortingLayer: 5
+  m_SortingLayer: 7
   m_SortingOrder: 0
   m_Sprite: {fileID: 2033581586, guid: be39d58b5f0529d41b509ea1aa9166e9, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -126,7 +126,7 @@ GameObject:
   - component: {fileID: 3364047005412872705}
   - component: {fileID: 2524834029660220092}
   - component: {fileID: -5451037791246836778}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Weapon_Glock
   m_TagString: Untagged
   m_Icon: {fileID: 0}

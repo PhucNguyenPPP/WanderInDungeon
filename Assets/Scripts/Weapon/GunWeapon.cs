@@ -12,6 +12,14 @@ public class GunWeapon : Weapon
         Projectile projectile = Instantiate(projectilePrefab);
         projectile.transform.position = shootPos.position;
         projectile.Direction = shootPos.right;
+        if (CharacterParent is PlayerWeapon player)
+        {
+            projectile.Damage = player.GetDamageUsingCricitalChance();
+        }
+        else
+        {
+            projectile.Damage = itemWeapon.Damage;
+        }
 
         float randomSpread = Random.Range(itemWeapon.MinSpread, itemWeapon.MaxSpread);
         projectile.transform.rotation = 
