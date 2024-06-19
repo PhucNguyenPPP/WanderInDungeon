@@ -1,9 +1,13 @@
+using System;
 using System.Collections;
 using NUnit.Framework.Internal.Builders;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class PlayerWeapon : CharacterWeapon
 {
+    public static event Action<Weapon> OnWeaponUIUpdateEvent;
+    
     [Header("Player")]
     [SerializeField] private PlayerConfig config;
     
@@ -46,6 +50,7 @@ public class PlayerWeapon : CharacterWeapon
         equippedWeapons[weaponIndex] = currentWeapon;
         equippedWeapons[weaponIndex].CharacterParent = this;
         ShowCurrentWeaponName();
+        OnWeaponUIUpdateEvent?.Invoke(currentWeapon);
     }
 
     public void EquipWeapon(Weapon weapon)
@@ -85,6 +90,7 @@ public class PlayerWeapon : CharacterWeapon
         currentWeapon.gameObject.SetActive(true);
         ResetWeaponForChange();
         ShowCurrentWeaponName();
+        OnWeaponUIUpdateEvent?.Invoke(currentWeapon);
     }
 
     private void RotatePlayerWeapon()

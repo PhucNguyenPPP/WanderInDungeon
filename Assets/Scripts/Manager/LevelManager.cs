@@ -6,6 +6,8 @@ using Random = UnityEngine.Random;
 
 public class LevelManager : Singleton<LevelManager>
 {
+    public static event Action OnRoomCompletedEvent;
+    
     [Header("Config")]
     [SerializeField] private RoomTemplate roomTemplates;
     [SerializeField] private DungeonLibrary dungeonLibrary;
@@ -41,6 +43,14 @@ public class LevelManager : Singleton<LevelManager>
         }
     }
 
+    private void CreateBoss()
+    {
+        Vector3 tilePos = currentRoom.GetAvailableTilePos();
+        EnemyBrain boss = Instantiate(dungeonLibrary.Levels[currentLevelIndex].Boss,
+            tilePos, Quaternion.identity, currentRoom.transform);
+        boss.RoomParent = currentRoom;
+    }
+    
     private void CreateEnemies()
     {
         int enemyAmount = GetEnemyAmount();
@@ -78,6 +88,35 @@ public class LevelManager : Singleton<LevelManager>
             (dungeonLibrary.Levels[currentLevelIndex].ChestItems.AvailableItems);
     }
 
+    private void CreateTombstonesInEnemyPos(Transform enemyTransform)
+    {
+        Instantiate(dungeonLibrary.Tombstones, enemyTransform.position,
+            Quaternion.identity, currentRoom.transform);
+    }
+
+    private void CreateChestInsideRoom()
+    {
+        Vector3 chestPos = currentRoom.GetAvailableTilePos();
+        Instantiate(dungeonLibrary.Chest, chestPos, Quaternion.identity,
+            currentRoom.transform);
+    }
+
+    private void CreateBonusInEnemyPos(Transform enemyPos)
+    {
+        int bonusAmount = 
+            Random.Range(dungeonLibrary.Levels[currentLevelIndex].MinBonusPerEnemy, 
+                dungeonLibrary.Levels[currentLevelIndex].MaxBonusPerEnemy);
+        for (int i = 0; i < bonusAmount; i++)
+        {
+            int randomBonusIndex = Random.Range(0, dungeonLibrary.EnemyBonus.Length);
+            Vector3 bonusExtraPos = (Vector3) Random.insideUnitCircle.normalized 
+                                    * dungeonLibrary.BonusCreationRadius;
+            Instantiate(dungeonLibrary.EnemyBonus[randomBonusIndex],
+                enemyPos.position + bonusExtraPos, 
+                Quaternion.identity, currentRoom.transform);
+        }
+    }
+    
     private void ContinueDungeon()
     {
         currentDungeonIndex++;
@@ -127,7 +166,13 @@ public class LevelManager : Singleton<LevelManager>
         UIManager.Instance.FadeNewDungeon(1f);
         yield return new WaitForSeconds(2f);
         ContinueDungeon();
+        UIManager.Instance.UpdateLevelText(GetCurrentLevelText());
         UIManager.Instance.FadeNewDungeon(0f);
+    }
+
+    private string GetCurrentLevelText()
+    {
+        return $"{dungeonLibrary.Levels[currentLevelIndex].Name} - {currentDungeonIndex + 1}";
     }
     
     private void PlayerEnterEventCallback(Room room)
@@ -142,6 +187,7 @@ public class LevelManager : Singleton<LevelManager>
                     CreateEnemies();
                     break;
                 case RoomType.RoomBoss:
+                    CreateBoss();
                     break;
             }
         }
@@ -151,10 +197,35 @@ public class LevelManager : Singleton<LevelManager>
     {
         StartCoroutine(IEContinueDungeon());
     }
+
+    private void EnemyKilledCallback(Transform enemyTransform)
+    {
+        enemyCounter--;
+        CreateTombstonesInEnemyPos(enemyTransform);
+        CreateBonusInEnemyPos(enemyTransform);
+        
+        if (enemyCounter <= 0)
+        {
+            if (currentRoom.RoomCompleted == false)
+            {
+                enemyCounter = 0;
+                currentRoom.SetRoomCompleted();
+                CreateChestInsideRoom();
+                OnRoomCompletedEvent?.Invoke();
+                if (currentRoom.RoomType == RoomType.RoomBoss)
+                {
+                    Vector3 tilePos = currentRoom.GetAvailableTilePos();
+                    Instantiate(dungeonLibrary.Portal, tilePos,
+                        Quaternion.identity, currentRoom.transform);
+                }
+            }
+        }
+    }
     
     private void OnEnable()
     {
         Room.OnPlayerEnterEvent += PlayerEnterEventCallback;
+        EnemyHealth.OnEnemyKilledEvent += EnemyKilledCallback;
         Portal.OnPortalEvent += PortalEventCallback;
     }
 
@@ -162,5 +233,6 @@ public class LevelManager : Singleton<LevelManager>
     {
         Room.OnPlayerEnterEvent -= PlayerEnterEventCallback;
         Portal.OnPortalEvent -= PortalEventCallback;
+        EnemyHealth.OnEnemyKilledEvent -= EnemyKilledCallback;
     }
 }
