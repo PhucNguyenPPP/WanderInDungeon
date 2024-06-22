@@ -10,6 +10,8 @@ public class PlayerHealth : MonoBehaviour, ITakeDamage
     [Header("Player")]
     [SerializeField] private PlayerConfig playerConfig;
 
+    private Coroutine regenerateArmorCoroutine;
+
     public void RecoverHealth(float amount)
     {
         playerConfig.CurrentHealth += amount;
@@ -45,11 +47,50 @@ public class PlayerHealth : MonoBehaviour, ITakeDamage
         {
             PlayerDead();
         }
+        // Restart the regeneration coroutine
+        StartRegenerateArmorCoroutine();
     }
 
     private void PlayerDead()
     {
         OnPlayerDeadEvent?.Invoke();
         Destroy(gameObject);
+    }
+
+    private void StartRegenerateArmorCoroutine()
+    {
+        if (regenerateArmorCoroutine != null)
+        {
+            StopCoroutine(regenerateArmorCoroutine);
+        }
+        regenerateArmorCoroutine = StartCoroutine(RegenerateArmor());
+        regenerateArmorCoroutine = StartCoroutine(RegenerateEnergy());
+    }
+
+    private IEnumerator RegenerateArmor()
+    {
+        while (true)
+        {
+            yield return new WaitForSeconds(3);
+
+            playerConfig.Armor += 1;
+            if (playerConfig.Armor > playerConfig.MaxArmor)
+            {
+                playerConfig.Armor = playerConfig.MaxArmor;
+            }
+        }
+    }
+    private IEnumerator RegenerateEnergy()
+    {
+        while (true)
+        {
+            yield return new WaitForSeconds(1);
+
+            playerConfig.Energy += 1;
+            if (playerConfig.Energy > playerConfig.MaxEnergy)
+            {
+                playerConfig.Energy = playerConfig.MaxEnergy;
+            }
+        }
     }
 }
