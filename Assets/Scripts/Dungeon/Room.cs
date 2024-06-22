@@ -103,6 +103,12 @@ public class Room : MonoBehaviour
         Vector3 pos = availableTiles[randomIndex];
         return pos;
     }
+
+    public void SetRoomCompleted()
+    {
+        RoomCompleted = true;
+        OpenDoors();
+    }
     
     public void CloseDoors()
     {

@@ -20,7 +20,7 @@ public class ItemWeapon : ItemData
     [Header("Data")]
     public WeaponType WeaponType;
     public WeaponRarity Rarity;
-
+    
     [Header("Settings")]
     public float Damage;
     public float RequiredEnergy;

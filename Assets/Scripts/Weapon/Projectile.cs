@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class Projectile : MonoBehaviour
@@ -7,10 +8,16 @@ public class Projectile : MonoBehaviour
 
     public Vector3 Direction { get; set; }
     public float Damage { get; set; }
-    
+    public float Speed { get; set; }
+
+    private void Start()
+    {
+        Speed = speed;
+    }
+
     private void Update()
     {
-        transform.Translate(Direction * (speed * Time.deltaTime));
+        transform.Translate(Direction * (Speed * Time.deltaTime));
     }
 
     private void OnTriggerEnter2D(Collider2D other)
